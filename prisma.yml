@@ -1,0 +1,13 @@
+#endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://eu1.prisma.sh/kouatchoua/backend/dev
+# endpoint: https://eu1.prisma.sh/kouatchoua/backend/dev
+datamodel: datamodel.prisma
+
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
+
+ 
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/
